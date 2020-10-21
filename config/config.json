@@ -1,0 +1,23 @@
+{
+  "development": {
+    "url": "postgres://jrlrmbso:4rnOZ5uJ2ydOAt1T7sbZ4mAO42_boMIW@kandula.db.elephantsql.com:5432/jrlrmbso",
+    "dialect": "postgres",
+    "operatorsAliases": "0"
+  },
+  "test": {
+    "username": "root",
+    "password": null,
+    "database": "database_test",
+    "host": "127.0.0.1",
+    "dialect": "postgres",
+    "operatorsAliases": "0"
+  },
+  "production": {
+    "username": "root",
+    "password": null,
+    "database": "database_production",
+    "host": "127.0.0.1",
+    "dialect": "postgres",
+    "operatorsAliases": "0"
+  }
+}
