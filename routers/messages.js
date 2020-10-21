@@ -5,11 +5,14 @@ const router = new Router();
 
 const { runValidation } = require("../validators");
 const { postMessageValidator } = require("../validators/messages/postMessage");
-// const { userSigninValidator } = require("../validators/auth/signin");
+const {
+  receivedMessagesValidator,
+} = require("../validators/messages/receivedMessages");
 
 const { postMessage } = require("../controllers/messages/postMessage");
-// const { signin } = require("../controllers/auth/signin");
-// const { signedin } = require("../controllers/auth/signedin");
+const {
+  receivedMessages,
+} = require("../controllers/messages/receivedMessages");
 
 router.post(
   "/post",
@@ -18,7 +21,12 @@ router.post(
   runValidation,
   postMessage
 );
-// router.post("/signin", userSigninValidator, runValidation, signin);
-// router.get("/me", authMiddleware, signedin);
+router.get(
+  "/received",
+  authMiddleware,
+  receivedMessagesValidator,
+  runValidation,
+  receivedMessages
+);
 
 module.exports = router;

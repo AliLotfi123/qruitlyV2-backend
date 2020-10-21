@@ -13,7 +13,7 @@ app.use(corsMiddleWare());
 const authMiddleWare = require("./auth/middleware");
 
 const authRouter = require("./routers/auth");
-const candidateRouter = require("./routers/recruiters");
+const candidateRouter = require("./routers/candidates");
 const messagesRouter = require("./routers/messages");
 app.use("/", authRouter);
 app.use("/candidates", candidateRouter);
