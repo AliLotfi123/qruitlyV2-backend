@@ -1,19 +1,24 @@
 const { Router } = require("express");
-const auth = require("../auth/middleware");
-const Message = require("../models").message;
+const authMiddleware = require("../auth/middleware");
 
 const router = new Router();
 
-router.get("/", async (req, res) => {
-  const message = await Message.findAll();
+const { runValidation } = require("../validators");
+const { postMessageValidator } = require("../validators/messages/postMessage");
+// const { userSigninValidator } = require("../validators/auth/signin");
 
-  console.log("dit is artwork", message);
+const { postMessage } = require("../controllers/messages/postMessage");
+// const { signin } = require("../controllers/auth/signin");
+// const { signedin } = require("../controllers/auth/signedin");
 
-  if (message === null) {
-    return res.status(404).send({ message: "candidate not found" });
-  }
-
-  res.status(200).send({ message });
-});
+router.post(
+  "/post",
+  authMiddleware,
+  postMessageValidator,
+  runValidation,
+  postMessage
+);
+// router.post("/signin", userSigninValidator, runValidation, signin);
+// router.get("/me", authMiddleware, signedin);
 
 module.exports = router;

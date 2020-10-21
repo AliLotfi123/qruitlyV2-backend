@@ -4,10 +4,14 @@ const User = require("../../models/").user;
 const { SALT_ROUNDS } = require("../../config/constants");
 
 exports.signup = async (req, res) => {
-  const { email, password, name, address, zipcode, city, country } = req.body;
-  if (!email || !password || !name) {
-    return res.status(400).send("Please provide an email, password and a name");
-  }
+  const {
+    email,
+    password,
+    firstName,
+    lastName,
+    company,
+    isRecruiter,
+  } = req.body;
 
   try {
     const newUser = await User.create({
