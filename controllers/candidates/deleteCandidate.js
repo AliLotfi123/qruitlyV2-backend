@@ -4,7 +4,7 @@ exports.deteleCandidate = async (req, res, next) => {
   try {
     const { id } = req.body;
     const candidate = await Candidate.findByPk(id);
-    const deleted = product.destroy();
+    const deleted = candidate.destroy();
 
     res.send({ message: "Candidate Deleted" });
   } catch (error) {
